@@ -23,5 +23,11 @@ namespace ChessGameSystem.Tabuleiro
         {
             return Pieces[line, column];
         }
+
+        public void PutPiece(ChessPiece piece, Position position)
+        {
+            Pieces[position.Line, position.Column] = piece;
+            piece.Position = position; 
+        }
     }
 }
