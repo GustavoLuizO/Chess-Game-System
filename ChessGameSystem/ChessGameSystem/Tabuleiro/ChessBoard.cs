@@ -18,5 +18,10 @@ namespace ChessGameSystem.Tabuleiro
             Columns = columns;
             Pieces = new ChessPiece[lines, columns];
         }
+
+        public ChessPiece ChessPiece(int line, int column)
+        {
+            return Pieces[line, column];
+        }
     }
 }
