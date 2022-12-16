@@ -13,9 +13,8 @@ namespace ChessGameSystem.Tabuleiro
         public int AmountMoves { get; set; }
         public ChessBoard ChessBoard { get; set; }
 
-        public ChessPiece(Position position, Color color, ChessBoard chessBoard)
+        public ChessPiece(Color color, ChessBoard chessBoard)
         {
-            Position = position;
             Color = color;
             ChessBoard = chessBoard;
         }
