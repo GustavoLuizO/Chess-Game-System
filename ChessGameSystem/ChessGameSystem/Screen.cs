@@ -9,14 +9,32 @@ namespace ChessGameSystem
         {
             for (int i = 0; i < chessBoard.Lines; i++)
             {
+                Console.Write(8 - i + "  ");
                 for (int j = 0; j < chessBoard.Columns; j++)
                 {
                     if (chessBoard.ChessPiece(line: i, column: j) == null)
                         Console.Write("- ");
                     else
-                        Console.Write(chessBoard.ChessPiece(line: i, column: j) + " ");
+                    {
+                        PrintOutPiece(chessBoard.ChessPiece(line: i, column: j));
+                        Console.Write(" ");
+                    }
                 }
                 Console.WriteLine();
+            }
+            Console.Write("   A B C D E F G H");
+        }
+
+        public static void PrintOutPiece(ChessPiece piece)
+        {
+            if (piece.Color == Color.White)
+                Console.Write(piece);
+            else
+            {
+                ConsoleColor colorSystem = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write(piece);
+                Console.ForegroundColor = colorSystem;
             }
         }
     }
