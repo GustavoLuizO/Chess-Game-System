@@ -34,6 +34,18 @@ namespace ChessGameSystem.Tabuleiro
             piece.Position = position;
         }
 
+        public ChessPiece RemovePiece(Position pos)
+        {
+            if (ChessPiece(pos) == null)
+                return null;
+            
+            ChessPiece removedPiece = ChessPiece(pos);
+            removedPiece.Position = null;
+            Pieces[pos.Line, pos.Column] = null;
+
+            return removedPiece;
+        }
+
         //TODO 1 : This function can be transferred to ValidatePosition's "IF" command, if you have no more references.
         public bool ExistsPosition(Position position)
         {
@@ -49,7 +61,7 @@ namespace ChessGameSystem.Tabuleiro
         public bool ExistsPiece(Position pos)
         {
             ValidatePosition(pos);
-            return Pieces[pos.Line, pos.Column] != null;
+            return ChessPiece(pos) != null;
         }
     }
 }
