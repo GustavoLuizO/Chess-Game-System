@@ -1,4 +1,5 @@
-﻿using ChessGameSystem.Tabuleiro;
+﻿using ChessGameSystem.Chess;
+using ChessGameSystem.Tabuleiro;
 using System;
 
 namespace ChessGameSystem
@@ -27,15 +28,23 @@ namespace ChessGameSystem
 
         public static void PrintOutPiece(ChessPiece piece)
         {
+            ConsoleColor colorSystem = Console.ForegroundColor;
+            
             if (piece.Color == Color.White)
-                Console.Write(piece);
+                Console.ForegroundColor = ConsoleColor.Blue;
             else
-            {
-                ConsoleColor colorSystem = Console.ForegroundColor;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(piece);
-                Console.ForegroundColor = colorSystem;
-            }
+            
+            Console.Write(piece);
+            Console.ForegroundColor = colorSystem;
+        }
+
+        public static PositionChess ReadPositionChess()
+        {
+            string positionChess = Console.ReadLine();
+            char column = positionChess[0];
+            int line = int.Parse(positionChess[1] + "");
+            return new PositionChess(column, line); ;
         }
     }
 }
