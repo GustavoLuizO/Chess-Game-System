@@ -10,16 +10,21 @@ namespace ChessGameSystem
         {
             try
             {
-                ChessBoard chessBoard = new ChessBoard(8, 8);
-                chessBoard.PutPiece(new Tower(Color.Black, chessBoard), new Position(0, 0));
-                chessBoard.PutPiece(new Tower(Color.Black, chessBoard), new Position(1, 3));
-                chessBoard.PutPiece(new King(Color.Black, chessBoard), new Position(2, 0));
+                ChessGame game = new ChessGame();
 
-                chessBoard.PutPiece(new Tower(Color.White, chessBoard), new Position(2, 1));
-                chessBoard.PutPiece(new Tower(Color.White, chessBoard), new Position(3, 2));
-                chessBoard.PutPiece(new King(Color.White, chessBoard), new Position(2, 5));
+                while(!game.Finished)
+                {
+                    Console.Clear();
+                    Screen.ShowChessBoard(game.ChessBoard);
 
-                Screen.ShowChessBoard(chessBoard);
+                    Console.WriteLine();
+                    Console.Write("Origin: ");
+                    Position origin = Screen.ReadPositionChess().ToPosition();
+                    Console.Write("Destination: ");
+                    Position destination = Screen.ReadPositionChess().ToPosition(); 
+                    
+                    game.ExecuteMovement(origin, destination);
+                }
             }
             catch (Exception ex)
             { Console.WriteLine(ex.Message); }
