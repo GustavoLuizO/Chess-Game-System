@@ -11,6 +11,8 @@
             Column = column;
         }
 
+        public Position() { }
+
         public override string ToString()
         {
             return Line + "," + Column;
